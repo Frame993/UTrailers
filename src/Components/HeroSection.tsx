@@ -4,11 +4,27 @@ import tomatoes from "../assets/Rotentomatoes.png";
 import play_icon from "../assets/Play.png";
 
 import ButtonWatch from "./ButtonWatch";
+import { useEffect, useState } from "react";
+import { useTrendingMovies } from "../hooks/useTrendingMovies";
+
 
 interface Props {
   className?: string;
 }
 export default function HeroSection({ className }: Props) {
+
+  const { getTrendings } = useTrendingMovies();
+  const [trendings, setTrendings] = useState<any>();
+
+  useEffect(() => {
+    const get = async () => {
+      setTrendings(await getTrendings());
+    };
+    get();
+  }, []);
+
+  console.log(trendings)
+
   return (
     <div
       className={`flex flex-col justify-center items-center hero md:h-[600px] relative ${className}`}
@@ -35,7 +51,11 @@ export default function HeroSection({ className }: Props) {
         <ButtonWatch text="Watch Trailer" icon={play_icon} />
       </section>
       <div className="top-0 z-[-1] absolute h-[600px] overflow-hidden">
-        <img src={Poster} alt="poster_image" className="object-cover w-full h-screen" />
+        <img
+          src={Poster}
+          alt="poster_image"
+          className="object-cover w-full h-screen"
+        />
       </div>
     </div>
   );
