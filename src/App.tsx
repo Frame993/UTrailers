@@ -1,14 +1,18 @@
 import HeroSection from "./Components/HeroSection";
 import InputSearch from "./Components/InputSearch";
+import next from "./assets/Chevron right.svg";
+import prev from "./assets/Chevron left.svg";
 
 import { useEffect, useState } from "react";
 import { useTrendingMovies } from "./hooks/useTrendingMovies";
 import { Result, trendingMovies } from "./interfaces/trendingMovies";
+import ButtonSlider from "./Components/ButtonSlider";
 
 export default function App() {
   const { getTrendings } = useTrendingMovies();
   const [trending, setTrending] = useState<Result[]>([]);
-  const [visibleIndex, setVisibleIndex] = useState(0);
+  const [current, setCurrent] = useState(0);
+  const [auto, setAuto] = useState(true);
 
   useEffect(() => {
     getTrendings().then((data: trendingMovies) => {
@@ -16,13 +20,23 @@ export default function App() {
     });
   }, []);
 
+  const handleNext = (pos: any) => {
+    setAuto(false);
+    current == 5 ? setCurrent(0) : setCurrent(current + pos);
+  };
+
+  const handlePrev = (pos: any) => {
+    setAuto(false);
+    current == 0 ? setCurrent(5) : setCurrent(current + pos);
+  };
+
   useEffect(() => {
     setTimeout(() => {
-      visibleIndex == 5
-        ? setVisibleIndex(0)
-        : setVisibleIndex(visibleIndex + 1);
-    }, 5000);
-  }, [visibleIndex]);
+      if (auto) {
+        current == 5 ? setCurrent(0) : setCurrent(current + 1);
+      }
+    }, 6000);
+  }, [current]);
 
   return (
     <div>
@@ -33,8 +47,12 @@ export default function App() {
               title={movie.title}
               overview={movie.overview}
               poster={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-              isVisible={visibleIndex == index}
-            />
+              isVisible={current == index}
+              vote={`${movie.vote_average.toFixed(1)}`}
+            >
+            <ButtonSlider handleClick={() => handlePrev(-1)} src={prev} />  
+            <ButtonSlider handleClick={() => handleNext(1)} src={next} />  
+            </HeroSection>
           </li>
         ))}
       </ul>
