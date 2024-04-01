@@ -18,14 +18,14 @@ body {
 
 h1 {
   font-size: 48px;
-  color : #fff;
+  color: #fff;
   font-weight: 700;
   line-height: 1.1;
 }
 
 p {
   font-size: 16px;
-  color : #fff;
+  color: #fff;
   font-weight: 400;
   line-height: 1.5;
 }
@@ -33,18 +33,19 @@ p {
 .search-input {
   background-image: url("./assets/Search.png");
   background-repeat: no-repeat;
-  background-position:97%;
+  background-position: 97%;
 }
 
 .search-input:focus {
   outline: 1px solid #fff;
 }
 
+
 @media screen and (max-width: 768px) {
   h1 {
     font-size: 32px;
   }
   .search-input {
-    background-position:94%;
+    background-position: 94%;
   }
 }

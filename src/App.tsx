@@ -16,26 +16,26 @@ export default function App() {
 
   useEffect(() => {
     getTrendings().then((data: trendingMovies) => {
-      setTrending((data.results as Result[]).slice(0, 6));
+      setTrending((data.results as Result[]).slice(0, 12));
     });
   }, []);
 
   const handleNext = (pos: any) => {
     setAuto(false);
-    current == 5 ? setCurrent(0) : setCurrent(current + pos);
+    current == 11 ? setCurrent(0) : setCurrent(current + pos);
   };
 
   const handlePrev = (pos: any) => {
     setAuto(false);
-    current == 0 ? setCurrent(5) : setCurrent(current + pos);
+    current == 0 ? setCurrent(11) : setCurrent(current + pos);
   };
 
   useEffect(() => {
     setTimeout(() => {
       if (auto) {
-        current == 5 ? setCurrent(0) : setCurrent(current + 1);
+        current == 11 ? setCurrent(0) : setCurrent(current + 1);
       }
-    }, 6000);
+    }, 10000);
   }, [current]);
 
   return (
@@ -46,9 +46,9 @@ export default function App() {
             <HeroSection
               title={movie.title}
               overview={movie.overview}
-              poster={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-              isVisible={current == index}
               vote={`${movie.vote_average.toFixed(1)}`}
+              isVisible={current == index}
+              poster={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
             >
             <ButtonSlider handleClick={() => handlePrev(-1)} src={prev} />  
             <ButtonSlider handleClick={() => handleNext(1)} src={next} />  
@@ -58,7 +58,7 @@ export default function App() {
       </ul>
       <header className="absolute top-0 h-[60px] w-full flex items-center justify-center z-[0]">
         <div className="md:w-[1200px] w-[90%] flex flex-row items-center justify-between">
-          <span className="text-xl font-bold">UTraiers</span>
+          <a href="/"><span className="text-xl font-bold">UTraiers</span></a>
           <InputSearch />
         </div>
       </header>

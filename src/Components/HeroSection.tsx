@@ -23,7 +23,7 @@ export default function HeroSection({
 }: Props) {
   return (
     <div
-      className={`flex flex-col justify-end items-center hero md:h-[600px] h-screen relative ${className} duration-1000 transition-all ${
+      className={`flex flex-col justify-end items-center h-screen relative ${className} duration-1000 transition-all ${
         !isVisible && "opacity-0"
       }`}
     >
@@ -36,14 +36,14 @@ export default function HeroSection({
               <p>{vote}</p>
             </div>
           </div>
-          <article className="md:w-[30%] w-[100%]">
+          <article className="md:w-[40%] w-[95%] text-pretty">
             <p>{overview}</p>
           </article>
           <ButtonWatch text="Watch Trailer" icon={play_icon} />
         </section>
         <div className="rounded-lg flex items-center gap-2">{children}</div>
       </div>
-      <div className="top-0 z-[-1] absolute md:h-[600px] h-screen overflow-hidden w-full">
+      <div className="top-0 z-[-99] absolute h-screen overflow-hidden w-full">
         <img
           src={poster}
           alt="poster_image"
