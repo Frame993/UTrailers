@@ -17,7 +17,7 @@ export const useTrendingMovies = () => {
       };
 
       const response = await fetch(
-        `${apiURL}trending/movie/day?language=en-US?api_key=${apiKey}`,
+        `${apiURL}trending/movie/week?language=en-US?api_key=${apiKey}`,
         options
       );
       const data = await response.json();

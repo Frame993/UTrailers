@@ -2,6 +2,9 @@ import HeroSection from "./Components/HeroSection";
 import InputSearch from "./Components/InputSearch";
 import next from "./assets/Chevron right.svg";
 import prev from "./assets/Chevron left.svg";
+import Menu from "./assets/Menu.svg";
+import logo from "/device-tv.svg"
+
 
 import { useEffect, useState } from "react";
 import { useTrendingMovies } from "./hooks/useTrendingMovies";
@@ -45,7 +48,7 @@ export default function App() {
           <li key={movie.id} className="absolute top-0 w-full">
             <HeroSection
               title={movie.title}
-              overview={movie.overview}
+              overview={movie.overview.length > 250 ? movie.overview.slice(0, 250) + "..." : movie.overview}
               vote={`${movie.vote_average.toFixed(1)}`}
               isVisible={current == index}
               poster={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
@@ -56,10 +59,16 @@ export default function App() {
           </li>
         ))}
       </ul>
-      <header className="absolute top-0 h-[60px] w-full flex items-center justify-center z-[0]">
+      <header className="absolute top-0 h-[60px] w-full flex items-center justify-center z-[0] py-4">
         <div className="md:w-[1200px] w-[90%] flex flex-row items-center justify-between">
-          <a href="/"><span className="text-xl font-bold">UTrailers</span></a>
+          <a href="/"><span className="text-xl font-bold flex gap-2">
+            <img src={logo} alt="logo" />
+            UTrailers</span></a>
           <InputSearch />
+          <div className="menu flex flex-row items-center gap-6">
+            <a href="#"><p>Sign in</p></a>
+            <button><img src={Menu} alt="icon_menu" /></button>
+          </div>
         </div>
       </header>
     </div>

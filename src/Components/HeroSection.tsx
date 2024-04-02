@@ -27,21 +27,21 @@ export default function HeroSection({
         !isVisible && "opacity-0"
       }`}
     >
-      <div className="flex flex-col md:flex-row md:w-[1200px] w-[90%] md:justify-between md:items-end gap-10 mb-10 md:mb-20">
-        <section className="flex flex-col gap-4">
-          <h1 className="md:w-[30%] w-[60%]">{title}</h1>
+      <div className="flex flex-col md:w-[1200px] w-[90%] gap-10 mb-8">
+        <section className="flex flex-col text-center items-center gap-4">
+          <h1 className="md:w-[50%] w-[90%] text-balance">{title}</h1>
           <div className="critic-container flex flex-row gap-4">
             <div className="imdb-container flex gap-2 items-center">
               <img src={imdb} alt="imbd_icon" className="w-full h-[18px]" />
               <p>{vote}</p>
             </div>
           </div>
-          <article className="md:w-[40%] w-[95%] text-pretty">
+          <article className="md:w-[40%] w-[90%] text-pretty mb-4">
             <p>{overview}</p>
           </article>
-          <ButtonWatch text="Watch Trailer" icon={play_icon} />
+          <ButtonWatch text="Trailer" icon={play_icon} />
         </section>
-        <div className="rounded-lg flex items-center gap-2">{children}</div>
+        <div className="rounded-lg flex items-center justify-between gap-2 absolute md:relative bottom-8 w-[90%] md:w-[1200px]">{children}</div>
       </div>
       <div className="top-0 z-[-99] absolute h-screen overflow-hidden w-full">
         <img
