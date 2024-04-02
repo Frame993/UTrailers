@@ -58,7 +58,7 @@ export default function App() {
       </ul>
       <header className="absolute top-0 h-[60px] w-full flex items-center justify-center z-[0]">
         <div className="md:w-[1200px] w-[90%] flex flex-row items-center justify-between">
-          <a href="/"><span className="text-xl font-bold">UTraiers</span></a>
+          <a href="/"><span className="text-xl font-bold">UTrailers</span></a>
           <InputSearch />
         </div>
       </header>
