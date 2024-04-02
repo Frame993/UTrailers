@@ -36,14 +36,14 @@ export default function HeroSection({
               <p>{vote}</p>
             </div>
           </div>
-          <article className="md:w-[40%] w-[90%] text-pretty mb-4">
-            <p>{overview}</p>
+          <article className="md:w-[60%] w-[90%] text-pretty mb-4">
+            <p className="text-white/60">{overview}</p>
           </article>
           <ButtonWatch text="Trailer" icon={play_icon} />
         </section>
-        <div className="rounded-lg flex items-center justify-between gap-2 absolute md:relative bottom-8 w-[90%] md:w-[1200px]">{children}</div>
+        <div className="rounded-lg flex items-center justify-between gap-2 absolute md:relative bottom-10 md:bottom-4 w-[90%] md:w-[1200px]">{children}</div>
       </div>
-      <div className="top-0 z-[-99] absolute h-screen overflow-hidden w-full">
+      <div className="top-0 z-[-99] absolute h-screen w-full">
         <img
           src={poster}
           alt="poster_image"
