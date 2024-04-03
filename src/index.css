@@ -10,7 +10,7 @@
 }
 
 body {
-  background: black;
+  background: #101010;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -45,6 +45,16 @@ p {
   line-height: 1.5;
 }
 
+/* .btn-category:hover{
+  background-color: #E50000;
+  transition: all 0.3s ease;
+}
+
+.btn-category:focus{
+  background-color: #E50000;
+  transition: all 0.3s ease;
+} */
+
 .search-input {
   background-image: url("./assets/Search.png");
   background-repeat: no-repeat;
@@ -63,6 +73,11 @@ p {
   h1 {
     font-size: 32px;
   }
+
+  h2 {
+    font-size: 24px;
+  }
+
   .search-input {
     background-position: 94%;
   }
