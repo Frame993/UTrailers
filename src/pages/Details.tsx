@@ -1,8 +1,11 @@
+import ButtonSlider from "../components/ButtonSlider";
+import prev from "../assets/Chevron left.svg";
+
 
 export default function Details() {
   return (
-    <div>
-      <h1>Details</h1>
+    <div className="w-[90%] md:w-[]1200px] mx-auto">
+     <ButtonSlider src={prev} handleClick={() => {}}/>
     </div>
   )
 }
