@@ -45,15 +45,15 @@ p {
   line-height: 1.5;
 }
 
-/* .btn-category:hover{
-  background-color: #E50000;
+.btn-category:hover{
+  background-color: black;
+  opacity: 0.8;
   transition: all 0.3s ease;
 }
 
 .btn-category:focus{
   background-color: #E50000;
-  transition: all 0.3s ease;
-} */
+}
 
 .search-input {
   background-image: url("./assets/Search.png");
