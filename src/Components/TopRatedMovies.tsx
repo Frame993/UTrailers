@@ -1,7 +1,9 @@
 import { useTopRatedMovies } from "../hooks/useTopRatedMovies";
 import { useState, useEffect } from "react";
-import { Result } from "../interfaces/trendingAll";
+import { Result } from "../interfaces/topRatedMovies";
 import CardComponent from "./CardComponent";
+import { useNavigate } from "react-router-dom";
+
 export default function TopRatedMovies() {
   const { getTopRatedMovies } = useTopRatedMovies();
   const [topRatedMovies, setTopRatedMovies] = useState<Result[]>([]);
@@ -12,15 +14,15 @@ export default function TopRatedMovies() {
     });
   }, []);
 
+  const navigate = useNavigate()
+
   return (
-    <ul className="grid grid-cols-2 md:grid-cols-4 justify-beetween md:gap-x-6 md:gap-y-6 gap-6">
+    <ul className="grid grid-cols-2 md:grid-cols-5 justify-beetween md:gap-x-2 md:gap-y-4 gap-x-4 gap-y-8">
       {topRatedMovies.map((movie) => (
-        <li key={movie.id} className="flex flex-col rounded-lg">
-          <CardComponent
-            poster={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-            title={movie.title}
-            date={movie.release_date}
-            vote={movie.vote_average}
+        <li  key={movie.id}  className="flex flex-col rounded-lg">
+          <CardComponent 
+            onCardClick={(movie) => navigate(`/details/${movie.title}`, { state: movie })}
+            movie={movie}
           />
         </li>
       ))}

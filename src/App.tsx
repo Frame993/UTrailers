@@ -1,14 +1,11 @@
 import HeroSection from "./components/HeroSection";
 import InputSearch from "./components/InputSearch";
+import TopRatedMovies from "./components/TopRatedMovies";
+import ButtonCategory from "./components/ButtonCategory";
+import { useState } from "react";
 
 import Menu from "./assets/Menu.svg";
 import logo from "/device-tv.svg";
-
-import { useState } from "react";
-
-import TopRatedSeries from "./components/TopRatedSeries";
-import TopRatedMovies from "./components/TopRatedMovies";
-import ButtonCategory from "./components/ButtonCategory";
 
 export default function App() {
   const [movies, setMovies] = useState(true);
@@ -62,7 +59,7 @@ export default function App() {
             isActive={series}
           />
         </div>
-        {(movies && <TopRatedMovies />) || (series && <TopRatedSeries />)}
+        {(movies && <TopRatedMovies />)}
       </div>
     </div>
   );
