@@ -2,12 +2,12 @@
 
 export interface topRatedSeries {
     page:          number;
-    results:       Result[];
+    results:       TopRatedSeriesResult[];
     total_pages:   number;
     total_results: number;
 }
 
-export interface Result {
+export interface TopRatedSeriesResult {
     backdrop_path:     string;
     first_air_date:    string;
     genre_ids:         number[];

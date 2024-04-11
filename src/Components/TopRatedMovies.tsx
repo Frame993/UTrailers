@@ -1,16 +1,16 @@
 import { useTopRatedMovies } from "../hooks/useTopRatedMovies";
 import { useState, useEffect } from "react";
-import { Result } from "../interfaces/topRatedMovies";
+import { TopRatedMoviesResult } from "../interfaces/topRatedMovies";
 import CardComponent from "./CardComponent";
 import { useNavigate } from "react-router-dom";
 
 export default function TopRatedMovies() {
   const { getTopRatedMovies } = useTopRatedMovies();
-  const [topRatedMovies, setTopRatedMovies] = useState<Result[]>([]);
+  const [topRatedMovies, setTopRatedMovies] = useState<TopRatedMoviesResult[]>([]);
 
   useEffect(() => {
     getTopRatedMovies().then((data) => {
-      setTopRatedMovies(data.results);
+      setTopRatedMovies(data?.results || []);
     });
   }, []);
 
@@ -22,7 +22,7 @@ export default function TopRatedMovies() {
         <li  key={movie.id}  className="flex flex-col rounded-lg">
           <CardComponent 
             onCardClick={(movie) => navigate(`/details/${movie.title}`, { state: movie })}
-            movie={movie}
+            movie={movie as TopRatedMoviesResult}
           />
         </li>
       ))}

@@ -1,28 +1,30 @@
 import { useEffect, useState } from "react";
-import { Result } from "../interfaces/trendingAll";
+import { TopRatedSeriesResult } from "../interfaces/topRatedSeries";
 import { useTopRatedSeries } from "../hooks/useTopRatedSeries";
 import CardComponent from "./CardComponent";
+import { useNavigate } from "react-router-dom";
 
 export default function TopRatedSeries() {
   const { getTopRatedSeries } = useTopRatedSeries();
-  const [topRatedSeries, setTopRatedSeries] = useState<Result[]>([]);
+  const [topRatedSeries, setTopRatedSeries] = useState<TopRatedSeriesResult[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getTopRatedSeries().then((data) => {
-      setTopRatedSeries(data.results);
+      setTopRatedSeries(data?.results || []);
     });
   }, []);
 
   return (
     <div>
-      <ul className="grid grid-cols-2 md:grid-cols-4 justify-beetween md:gap-x-6 md:gap-y-6 gap-6">
+      <ul className="grid grid-cols-2 md:grid-cols-5 justify-beetween md:gap-x-2 md:gap-y-4 gap-x-4 gap-y-8">
         {topRatedSeries.map((serie) => (
           <li key={serie.id} className="flex flex-col rounded-lg">
             <CardComponent
-            title={serie.name}
-              poster={`https://image.tmdb.org/t/p/original${serie.poster_path}`}
-              date={serie.first_air_date}
-              vote={serie.vote_average}
+              onCardClick={(movie) =>
+                navigate(`/details/${movie.title}`, { state: movie })
+              }
+              movie={serie as TopRatedSeriesResult}
             />
           </li>
         ))}

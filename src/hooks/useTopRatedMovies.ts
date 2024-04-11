@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { TopRatedMovies } from "../interfaces/topRatedMovies";
 
 export const useTopRatedMovies = () => {
   const apiURL = import.meta.env.VITE_MOVIES_API_URL;
@@ -21,7 +22,7 @@ export const useTopRatedMovies = () => {
         options
       );
       const data = await response.json();
-      return data;
+      return data as TopRatedMovies;
     } catch (e) {
     } finally {
       setIsLoading(false);

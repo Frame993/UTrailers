@@ -2,12 +2,12 @@
 
 export interface trendingAll {
     page:          number;
-    results:       Result[];
+    results:       TrendingAllResult[];
     total_pages:   number;
     total_results: number;
 }
 
-export interface Result {
+export interface TrendingAllResult {
     adult:             boolean;
     backdrop_path:     string;
     id:                number;

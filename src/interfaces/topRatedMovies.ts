@@ -2,12 +2,12 @@
 
 export interface TopRatedMovies {
     page:          number;
-    results:       Result[];
+    results:       TopRatedMoviesResult[];
     total_pages:   number;
     total_results: number;
 }
 
-export interface Result {
+export interface TopRatedMoviesResult {
     adult:             boolean;
     backdrop_path:     string;
     genre_ids:         number[];

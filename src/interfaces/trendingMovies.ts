@@ -2,12 +2,12 @@
 
 export interface trendingMovies {
     page:          number;
-    results:       Result[];
+    results:       TrendingMoviesResult[];
     total_pages:   number;
     total_results: number;
 }
 
-export interface Result {
+export interface TrendingMoviesResult {
     adult:             boolean;
     backdrop_path:     string;
     id:                number;
