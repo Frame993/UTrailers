@@ -5,7 +5,7 @@ import ButtonSlider from "./ButtonSlider";
 import next from "../assets/Chevron right.svg";
 import prev from "../assets/Chevron left.svg";
 
-import { Result, trendingAll } from "../interfaces/trendingAll";
+import { TrendingAllResult, trendingAll } from "../interfaces/trendingAll";
 import { useTrendingMovies } from "../hooks/useTrendingMovies";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -13,14 +13,14 @@ import { useNavigate } from "react-router-dom";
 
 export default function HeroSection() {
   const { getTrendings } = useTrendingMovies();
-  const [trending, setTrending] = useState<Result[]>([]);
+  const [trending, setTrending] = useState<TrendingAllResult[]>([]);
   const [auto, setAuto] = useState(true);
   const [current, setCurrent] = useState(0);
 
   //data
   useEffect(() => {
     getTrendings().then((data: trendingAll) => {
-      setTrending((data.results as Result[]).slice(0, 12));
+      setTrending((data.results as TrendingAllResult[]).slice(0, 12));
     });
   }, []);
 

@@ -22,7 +22,6 @@ export default function App() {
     setSeries(true);
   };
 
-
   return (
     <div className="flex flex-col">
       <header className="absolute top-0 h-[60px] w-full flex items-center justify-center z-10 py-4">
@@ -60,7 +59,7 @@ export default function App() {
             isActive={series}
           />
         </div>
-        {(movies && <TopRatedMovies /> )|| (series && <TopRatedSeries />)}
+        {(movies && <TopRatedMovies />) || (series && <TopRatedSeries />)}
       </div>
     </div>
   );
