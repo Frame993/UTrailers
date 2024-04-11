@@ -8,6 +8,7 @@ import prev from "../assets/Chevron left.svg";
 import { Result, trendingAll } from "../interfaces/trendingAll";
 import { useTrendingMovies } from "../hooks/useTrendingMovies";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function HeroSection() {
@@ -42,11 +43,14 @@ export default function HeroSection() {
     }, 10000);
   }, [current]);
 
+  const navigate = useNavigate()
+
   return (
     <ul className="relative h-screen">
       {trending.map((movie, index) => (
         <li key={movie.id} className="w-full absolute top-0">
           <div
+          // need to fix here the transition not as opacity but as a transition from the left to right
             className={`flex flex-col justify-end items-center h-screen relative duration-1000 transition-all ${ index == current ? "opacity-100" : "opacity-0" }`}
           >
             <div className="flex flex-col md:w-[1200px] w-[90%] gap-10 mb-8">
@@ -71,9 +75,9 @@ export default function HeroSection() {
                       : movie.overview}
                   </p>
                 </article>
-                <ButtonWatch text="Trailer" icon={play_icon} />
+                <ButtonWatch text="Trailer" icon={play_icon} movie={trending[current]}  onClick={() => navigate( `/details/${trending[current].title ?? trending[current].name}`, { state: trending[current] })}/>
               </section>
-              <div className="rounded-lg flex items-center justify-between gap-2 absolute md:relative bottom-10 md:bottom-4 w-[90%] md:w-[1200px]">
+              <div className="rounded-lg flex items-center justify-between gap-2 absolute md:relative bottom-10 md:bottom-4 w-[90%] md:w-[1200px] -z-1">
                 <ButtonSlider handleClick={() => handlePrev(-1)} src={prev} />
                 <ButtonSlider handleClick={() => handleNext(1)} src={next} />
               </div>
