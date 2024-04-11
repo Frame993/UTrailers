@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import Menu from "./assets/Menu.svg";
 import logo from "/device-tv.svg";
+import TopRatedSeries from "./components/TopRatedSeries";
 
 export default function App() {
   const [movies, setMovies] = useState(true);
@@ -59,7 +60,7 @@ export default function App() {
             isActive={series}
           />
         </div>
-        {(movies && <TopRatedMovies />)}
+        {(movies && <TopRatedMovies /> )|| (series && <TopRatedSeries />)}
       </div>
     </div>
   );
