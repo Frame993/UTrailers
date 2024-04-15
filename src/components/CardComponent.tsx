@@ -1,11 +1,11 @@
 import imdb from "../assets/imdb.png";
-import { Result } from "../interfaces/topRatedMovies";
-import { Result as SeriesResult } from "../interfaces/topRatedSeries";
+import { TopRatedMoviesResult } from "../interfaces/topRatedMovies";
+import { TopRatedSeriesResult} from "../interfaces/topRatedSeries";
 
-type ResultUnion = Result & SeriesResult
+type ResultUnion = TopRatedMoviesResult & TopRatedSeriesResult
 
 interface Props {
-  movie: ResultUnion;
+  movie:  ResultUnion;
   onCardClick: (movie : ResultUnion) => void;
 }
 export default function CardComponent({ movie, onCardClick }: Props) {

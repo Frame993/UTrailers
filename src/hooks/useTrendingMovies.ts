@@ -28,5 +28,7 @@ export const useTrendingMovies = () => {
     }
   };
 
+  
+
   return { isLoading, getTrendings };
 };

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { movieDetails } from "../interfaces/movieDetails";
-import { Result } from "../interfaces/trendingAll";
 
-export const useDetailInfoMovie = (movie:Result)=>{
+export const useDetailInfoMovie = (id:number, isMovie:boolean)=>{
     const apiURL = import.meta.env.VITE_MOVIES_API_URL;
     const apiKey = import.meta.env.VITE_MOVIES_API_KEY;
     const [details, setDetails ] = useState<movieDetails>()
@@ -20,7 +19,7 @@ export const useDetailInfoMovie = (movie:Result)=>{
           };
     
           const response = await fetch(
-            `${apiURL}${movie.title? 'movie' : 'tv'}/${movie.id}?language=en-US&page=1?api_key=${apiKey}`,
+            `${apiURL}${isMovie? 'movie' : 'tv'}/${id}?language=en-US&page=1?api_key=${apiKey}`,
             options
           );
           const data = await response.json();

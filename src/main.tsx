@@ -30,7 +30,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <Wrapper>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/details/:title" element={<Details />} />
+        <Route path="/details/:type/:title" element={<Details />} />
       </Routes>
     </Wrapper>
   </Router>

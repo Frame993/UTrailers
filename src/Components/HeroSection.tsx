@@ -75,7 +75,7 @@ export default function HeroSection() {
                       : movie.overview}
                   </p>
                 </article>
-                <ButtonWatch text="Trailer" icon={play_icon} movie={trending[current]}  onClick={() => navigate( `/details/${trending[current].title ?? trending[current].name}`, { state: trending[current] })}/>
+                <ButtonWatch text="Trailer" icon={play_icon} movie={trending[current]}  onClick={() => navigate( `/details/${trending[current].name ? 'tv' : 'movie'}/${trending[current].title ?? trending[current].name}`, { state: trending[current] })}/>
               </section>
               <div className="rounded-lg flex items-center justify-between gap-2 absolute md:relative bottom-10 md:bottom-4 w-[90%] md:w-[1200px] -z-1">
                 <ButtonSlider handleClick={() => handlePrev(-1)} src={prev} />

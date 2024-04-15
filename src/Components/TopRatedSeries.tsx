@@ -22,9 +22,9 @@ export default function TopRatedSeries() {
           <li key={serie.id} className="flex flex-col rounded-lg">
             <CardComponent
               onCardClick={(movie) =>
-                navigate(`/details/${movie.title}`, { state: movie })
+                navigate(`/details/tv/${movie.title}`, { state: movie })
               }
-              movie={serie as TopRatedSeriesResult}
+              movie={serie as any}
             />
           </li>
         ))}

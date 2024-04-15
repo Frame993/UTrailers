@@ -21,8 +21,8 @@ export default function TopRatedMovies() {
       {topRatedMovies.map((movie) => (
         <li  key={movie.id}  className="flex flex-col rounded-lg">
           <CardComponent 
-            onCardClick={(movie) => navigate(`/details/${movie.title}`, { state: movie })}
-            movie={movie as TopRatedMoviesResult}
+            onCardClick={(movie) => navigate(`/details/movie/${movie.title}`, { state: movie })}
+            movie={movie as any}
           />
         </li>
       ))}
