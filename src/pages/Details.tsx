@@ -61,14 +61,14 @@ export default function Details() {
             src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
             alt={`${movie?.title ?? movie?.name}_poster`}
           />
-          <div className="flex flex-col md:flex-row gap-6 px-10 py-16 xm:items-center">
+          <div className="flex flex-col md:flex-row gap-6 px-10 py-16 xm:items-center items-center">
             <img
               src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
               alt={`${movie?.title ?? movie?.name}_poster`}
               className="h-full w-[200px] rounded-lg"
             />
-            <div className="flex flex-col md:items-start items-center justify-end gap-4 mb-8">
-              <h1 className="md:w-[100%] w-[90%] text-balance text-[30px]">
+            <div className="flex flex-col md:items-start items-center md:justify-end gap-4 mb-8">
+              <h1 className="md:w-[100%] text-balance text-[30px]">
                 {movie?.title ?? movie?.name}
               </h1>
               <div className="critic-container flex flex-row gap-4">
